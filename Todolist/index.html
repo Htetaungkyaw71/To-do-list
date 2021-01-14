@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To do list</title>
+    <script>
+        document.addEventListener('DOMContentLoaded',()=>{
+            
+            document.querySelector("#submit").disabled = true;
+            document.querySelector("#task").onkeyup = ()=>{
+                if(document.querySelector('#task').value.length > 0){
+                    document.querySelector("#submit").disabled = false;
+                }
+                else{
+                    document.querySelector("#submit").disabled = true;
+                }
+               
+            }
+            document.querySelector('form').onsubmit = ()=>{
+                const task =document.querySelector('#task').value;
+                const li =document.createElement('li');
+     
+        
+                li.innerHTML = task;
+                
+            
+           
+                document.querySelector("#tasks").append(li);
+               
+              
+               
+            
+                document.querySelector('#task').value ='';
+                document.querySelector("#submit").disabled = true;
+
+
+                return false;
+            }
+        })
+    </script>
+    <style>
+        
+        div h1{
+            color:  white;
+        }
+      
+        div{
+            color: white;
+            margin: 100px auto;
+            background-color: #FFB6AD;
+            width: 250px;
+            height: 300px;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 3px 3px 3px 2px #d8c5c3a6;
+            animation-name: ho;
+            animation-duration: 2s;
+            animation-fill-mode: forwards;
+            
+         
+        }
+        #task{
+            width: 150px;
+            height: 25px;
+            border: none;
+        }
+        #submit{
+            width: 70px;
+            height: 25px;
+            background-color: transparent;
+            border: 2px solid white; 
+            border-radius: 10px;
+            color: white;
+            transition: 0.5s;
+        }
+        #submit:hover{
+            background-color: white;
+            color: black;
+        }
+        body{
+            background-image: url(1.png);
+            background-repeat: no-repeat;
+            background-size: cover;
+
+        }
+        .a{
+            animation-name: move;
+            animation-duration: 2s;
+            animation-fill-mode: forwards;
+            position: relative;
+            animation-iteration-count: 1;
+            color:white;
+        }
+        @keyframes move {
+             from{
+                 margin-left: 0%;
+             }
+             to{
+                 margin-left: 44%;
+             }
+            
+        }
+        @keyframes ho {
+            from{
+                opacity: 0;
+            }
+            to{
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1 class="a">To Do List!</h1>
+    <div>
+        <h1>Tasks</h1>
+        
+        <form>
+            <input type="text" placeholder="new task" id="task">
+            <input type="submit" id="submit">
+        </form>
+        <ol id="tasks"></ol>
+</div>
+
+</body>
+</html>
